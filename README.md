@@ -1,8 +1,8 @@
 # 🚀 Synthetic Data Object Detection (YOLOv8 + Blender)
 
 This project explores training an object detection model using **synthetic data generated in Blender**.  
-Instead of collecting real-world images, a simple 3D scene is rendered multiple times with small variations.  
-The rendered images are then used to train a **YOLOv8** object detection model.
+Instead of collecting real-world images, a simple 3D scene is rendered multiple times with controlled randomization.  
+The rendered images are then used to train a **YOLOv8** object detection model end-to-end.
 
 ---
 
@@ -54,12 +54,15 @@ synthetic-data-object-detection/
 ## 🛠️ Synthetic Data Generation
 
 * A base Blender scene contains a table, bottle, and ball.
-* A Python script randomizes object position, rotation, and scale.
+* A Python script randomizes:
+  * Object position
+  * Object rotation
+  * Object scale
 * Images are rendered automatically.
 * Bounding boxes are generated directly from Blender in **YOLO format**.
 * The dataset is split into training and validation sets.
 
-All training data in this project is **fully synthetic**.
+All data used in this project is **fully synthetic**.
 
 ---
 
@@ -73,18 +76,31 @@ All training data in this project is **fully synthetic**.
 The final trained model is saved as:
 `models/yolov8n_synthetic_final.pt`
 
-Training and prediction outputs are automatically written by YOLO to the `runs/` directory, which is excluded from version control.
+Training and inference outputs are automatically written by YOLO to the `runs/` directory, which is excluded from version control.
 
 ---
 
-## 📊 Results
+## 📊 Evaluation Metrics
 
-The trained model performs very well on the validation set and consistently detects all three objects.
+Validation performance on the synthetic dataset:
+
+| Class | Precision | Recall | mAP@50 | mAP@50–95 |
+| :--- | :---: | :---: | :---: | :---: |
+| **Table** | 0.995 | 1.000 | 0.995 | 0.991 |
+| **Bottle** | 0.998 | 1.000 | 0.995 | 0.809 |
+| **Ball** | 0.999 | 1.000 | 0.995 | 0.873 |
+| **All** | **0.997** | **1.000** | **0.995** | **0.891** |
+
+> **Note:** The bottle class shows a slightly lower mAP@50–95 due to its thin geometry and sensitivity to camera angle and partial occlusion.
+
+---
+
+## 🖼️ Sample Predictions
 
 A small number of prediction images were manually selected and saved in:
 `assets/predictions/`
 
-These images demonstrate the final model’s inference results.
+These images demonstrate the final model’s inference performance on validation data.
 
 ---
 
@@ -105,7 +121,7 @@ Prediction outputs will be saved to:
 
 * Pretrained YOLO weights (`yolov8n.pt`) are downloaded automatically and are not included in the repository.
 * The `runs/` directory is generated during training and inference and is ignored in Git.
-* The focus of this project is the end-to-end pipeline, not real-world deployment.
+* This project focuses on the end-to-end pipeline, not real-world deployment.
 
 ---
 
@@ -116,4 +132,3 @@ This project was built to gain practical experience with:
 * Synthetic dataset generation
 * Automatic bounding box labeling
 * Training object detection models using YOLO
-* End-to-end computer vision pipelines using synthetic data
