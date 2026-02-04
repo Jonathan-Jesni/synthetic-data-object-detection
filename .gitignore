@@ -1,0 +1,38 @@
+# ======================
+# Python junk
+# ======================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# ======================
+# YOLO auto-generated outputs
+# ======================
+runs/
+
+# ======================
+# YOLO / Ultralytics
+# ======================
+yolov8.pt
+yolov8*.pt
+
+# ======================
+# Blender auto renders (raw synthetic data)
+# ======================
+blender/renders/
+
+# ======================
+# OS junk
+# ======================
+Thumbs.db
+.DS_Store
+
+# ======================
+# Logs (optional)
+# ======================
+*.log
+
+
