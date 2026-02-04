@@ -1,11 +1,11 @@
 Synthetic Data Object Detection (YOLOv8 + Blender)
 
 This project explores training an object detection model using synthetic data generated in Blender.
-Instead of collecting real-world images, a simple 3D scene is rendered multiple times with small variations, and the resulting images are used to train a YOLOv8 model.
+Instead of collecting real-world images, a simple 3D scene is rendered multiple times with small variations. The rendered images are then used to train a YOLOv8 object detection model.
 
 Objects Detected
 
-The model is trained to detect three objects:
+The model is trained to detect the following objects:
 
 Table
 
@@ -66,7 +66,7 @@ Training device: CPU
 
 Epochs: 100
 
-Image size: 640×640
+Image size: 640 × 640
 
 The final trained model is saved as:
 
@@ -77,18 +77,18 @@ Training and prediction outputs are automatically written by YOLO to the runs/ d
 
 Results
 
-The model performs very well on the validation set, consistently detecting all three objects.
+The trained model performs very well on the validation set and consistently detects all three objects.
 
 A small number of prediction images were manually selected and saved in:
 
 assets/predictions/
 
 
-These images show the final model’s inference results.
+These images demonstrate the final model’s inference results.
 
 Running Inference
 
-Example command to run prediction on validation images:
+To run inference on validation images:
 
 yolo predict model=models/yolov8n_synthetic_final.pt source=dataset/images/val imgsz=640 device=cpu
 
@@ -107,12 +107,12 @@ The focus of this project is the end-to-end pipeline, not real-world deployment.
 
 Purpose
 
-This project was built to understand:
+This project was built to gain practical experience with:
 
 Synthetic dataset generation
 
 Automatic bounding box labeling
 
-Training object detection models with YOLO
+Training object detection models using YOLO
 
-Full computer vision pipelines using synthetic data
+End-to-end computer vision pipelines using synthetic data
